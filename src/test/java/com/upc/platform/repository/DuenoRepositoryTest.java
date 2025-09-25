@@ -34,4 +34,21 @@ class DuenoRepositoryTest {
         assertEquals("Juan", duenoEncontrado.get().getNombre());
         assertEquals("Perez", duenoEncontrado.get().getApellido());
     }
+
+    @Test
+    @DisplayName("Debe encontrar todos los dueños y contar correctamente")
+    void testEncontrarTodosYContar() {
+        // Arrange
+        Dueno dueno1 = new Dueno("Juan", "Perez", "123456789", "Calle Falsa 123");
+        Dueno dueno2 = new Dueno("Maria", "Gomez", "987654321", "Avenida Siempre Viva 456");
+        duenoRepository.save(dueno1);
+        duenoRepository.save(dueno2);
+
+        // Act
+        long total = duenoRepository.count();
+
+        // Assert
+        assertEquals(2, total);
+        assertEquals(2, duenoRepository.findAll().size());
+    }
 }
