@@ -51,4 +51,20 @@ class DuenoRepositoryTest {
         assertEquals(2, total);
         assertEquals(2, duenoRepository.findAll().size());
     }
+
+    @Test
+    @DisplayName("Debe actualizar un dueño existente correctamente")
+    void testActualizarExistente() {
+        // Arrange
+        Dueno dueno = new Dueno("Juan", "Perez", "123456789", "Calle Falsa 123");
+        Dueno duenoGuardado = duenoRepository.save(dueno);
+
+        // Act
+        duenoGuardado.setDireccion("Nueva Direccion 456");
+        Dueno duenoActualizado = duenoRepository.save(duenoGuardado);
+        Dueno duenoLeido = duenoRepository.findById(duenoActualizado.getId()).orElseThrow();
+
+        // Assert
+        assertEquals("Nueva Direccion 456", duenoLeido.getDireccion());
+    }
 }
