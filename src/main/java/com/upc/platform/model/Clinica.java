@@ -3,6 +3,7 @@ package com.upc.platform.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -17,6 +18,11 @@ public class Clinica {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.mascotas = new ArrayList<>();
     }
-    // Getters y setters
+
+    void registrarMascota(Mascota mascota) {
+        mascotas.add(mascota);
+        mascota.setClinica(this);
+    }
 }

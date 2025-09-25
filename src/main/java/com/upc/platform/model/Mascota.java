@@ -22,5 +22,5 @@ public class Mascota {
         this.dueno = dueno;
         this.clinica = clinica;
     }
-    // Getters y setters
+
 }
