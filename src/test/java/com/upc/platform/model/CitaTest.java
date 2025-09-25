@@ -29,4 +29,23 @@ class CitaTest {
         assertEquals(estadoEsperado, cita.getEstado());
         assertNotNull(cita.getFechaReserva());
     }
+
+    @Test
+    void testCancelarCitaConMasDeTresHoras() {
+        // Arrange
+        Dueno dueno = new Dueno("Juan", "Perez", "123456789", "Calle Falsa 123");
+        Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", 3, dueno, null);
+        LocalDateTime fecha = LocalDateTime.now().plusHours(5);
+        String motivo = "Consulta general";
+        Cita cita = new Cita(mascota, fecha, motivo);
+
+        // Act
+        LocalDateTime fechaCancelacion = LocalDateTime.now();
+        String estadoEsperado = "Cancelada";
+        cita.cancelar(fechaCancelacion);
+
+        // Assert
+        assertEquals(estadoEsperado, cita.getEstado());
+        assertEquals(fechaCancelacion, cita.getFechaCancelacion());
+    }
 }
