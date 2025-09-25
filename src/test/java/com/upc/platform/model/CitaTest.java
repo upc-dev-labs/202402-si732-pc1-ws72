@@ -15,7 +15,6 @@ class CitaTest {
         // Arrange
         Dueno dueno = new Dueno("Juan", "Perez", "123456789", "Calle Falsa 123");
         Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", 3, dueno, null);
-        Clinica clinica = new Clinica("Clinica Veterinaria", "Av. Siempre Viva 456", "987654321");
         LocalDateTime fecha = LocalDateTime.of(2024, 6, 15, 10, 30);
         String motivo = "Consulta general";
 
